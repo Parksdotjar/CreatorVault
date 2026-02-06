@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { buttonVariants } from "@/components/Button";
+import { buttonVariants } from "@/components/buttonVariants";
 import { AssetGrid } from "@/components/AssetGrid";
 import { Card } from "@/components/Card";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Asset } from "@/types/asset";
+
+export const dynamic = "force-dynamic";
 
 async function getAssets(
   orderBy: "download_count" | "created_at",

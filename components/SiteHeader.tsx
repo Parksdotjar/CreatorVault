@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Button, buttonVariants } from "@/components/Button";
+import { Button } from "@/components/Button";
+import { buttonVariants } from "@/components/buttonVariants";
 import { useAuth } from "@/components/Providers";
 import { cn } from "@/lib/utils";
 

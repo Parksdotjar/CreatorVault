@@ -4,15 +4,25 @@ import type { Database } from "@/types/supabase";
 let browserClient: ReturnType<typeof createClient<Database>> | null = null;
 
 export function createSupabaseBrowserClient() {
-  if (browserClient) return browserClient;
+  const isServer = typeof window === "undefined";
+  if (!isServer && browserClient) return browserClient;
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!supabaseUrl || !supabaseAnonKey) {
+    if (isServer) {
+      return createClient<Database>("http://localhost", "anon-key", {
+        auth: {
+          persistSession: false,
+          autoRefreshToken: false,
+          detectSessionInUrl: false,
+        },
+      });
+    }
     throw new Error("Missing Supabase environment variables.");
   }
 
-  browserClient = createClient<Database>(supabaseUrl, supabaseAnonKey, {
+  const client = createClient<Database>(supabaseUrl, supabaseAnonKey, {
     auth: {
       persistSession: true,
       autoRefreshToken: true,
@@ -20,5 +30,9 @@ export function createSupabaseBrowserClient() {
     },
   });
 
-  return browserClient;
+  if (!isServer) {
+    browserClient = client;
+  }
+
+  return client;
 }

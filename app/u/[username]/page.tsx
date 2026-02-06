@@ -7,6 +7,8 @@ type PageProps = {
   params: { username: string };
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function UserProfilePage({ params }: PageProps) {
   const supabase = await createSupabaseServerClient();
   const { data: profile } = await supabase

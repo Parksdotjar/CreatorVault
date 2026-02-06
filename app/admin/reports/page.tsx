@@ -3,6 +3,8 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { Card } from "@/components/Card";
 import { formatDate } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminReportsPage() {
   const supabase = await createSupabaseServerClient();
   const { data: reports } = await supabase

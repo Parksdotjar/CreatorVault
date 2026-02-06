@@ -20,8 +20,14 @@ function normalizeSocials(input: unknown): Record<string, string> | null {
   if (!input || typeof input !== "object" || Array.isArray(input)) {
     return null;
   }
-  const entries = Object.entries(input as Record<string, unknown>).filter(
-    ([, value]) => typeof value === "string" && value.length > 0
+  const entries = Object.entries(input as Record<string, unknown>).reduce(
+    (acc, [key, value]) => {
+      if (typeof value === "string" && value.length > 0) {
+        acc.push([key, value]);
+      }
+      return acc;
+    },
+    [] as [string, string][]
   );
   return entries.length ? Object.fromEntries(entries) : null;
 }

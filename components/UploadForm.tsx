@@ -56,7 +56,7 @@ export function UploadForm() {
     xhrRef.current = null;
   };
 
-  const handleUpload = async (assetId?: string) => {
+  const handleUpload = async (assetId: string) => {
     if (!file) return;
     const sizeLimit =
       MAX_UPLOAD_SIZES[form.type as (typeof ASSET_TYPES)[number]];

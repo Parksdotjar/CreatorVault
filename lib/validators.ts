@@ -28,7 +28,7 @@ export const profileUpdateSchema = z.object({
   display_name: z.string().max(40).optional().nullable(),
   bio: z.string().max(240).optional().nullable(),
   socials: z
-    .record(z.string().url().or(z.literal("")))
+    .record(z.string(), z.string().url().or(z.literal("")))
     .optional()
     .nullable(),
 });
