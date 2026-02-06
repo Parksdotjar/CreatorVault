@@ -13,7 +13,7 @@ type PageProps = {
 };
 
 export default async function AssetDetailPage({ params }: PageProps) {
-  const supabase = createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -105,7 +105,7 @@ export default async function AssetDetailPage({ params }: PageProps) {
             </div>
             {asset.tags?.length ? (
               <div className="flex flex-wrap gap-2 pt-2 text-xs text-accent-400">
-                {asset.tags.map((tag) => (
+                {asset.tags.map((tag: string) => (
                   <span
                     key={tag}
                     className="rounded-full border border-accent-500/40 px-2 py-1"

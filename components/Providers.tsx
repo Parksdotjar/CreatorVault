@@ -16,6 +16,16 @@ type AuthContextValue = {
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
+function normalizeSocials(input: unknown): Record<string, string> | null {
+  if (!input || typeof input !== "object" || Array.isArray(input)) {
+    return null;
+  }
+  const entries = Object.entries(input as Record<string, unknown>).filter(
+    ([, value]) => typeof value === "string" && value.length > 0
+  );
+  return entries.length ? Object.fromEntries(entries) : null;
+}
+
 export function useAuth() {
   const context = useContext(AuthContext);
   if (!context) {
@@ -41,7 +51,19 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
         .select("id, username, display_name, bio, socials, role, created_at")
         .eq("id", currentUser.id)
         .single();
-      setProfile(data ?? null);
+      if (!data) {
+        setProfile(null);
+        return;
+      }
+      setProfile({
+        id: data.id,
+        username: data.username,
+        display_name: data.display_name ?? null,
+        bio: data.bio ?? null,
+        socials: normalizeSocials(data.socials),
+        role: (data.role as Profile["role"]) ?? "user",
+        created_at: data.created_at,
+      });
     },
     [supabase]
   );

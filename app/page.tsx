@@ -9,7 +9,7 @@ async function getAssets(
   orderBy: "download_count" | "created_at",
   limit = 6
 ) {
-  const supabase = createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient();
   const { data } = await supabase
     .from("assets")
     .select("*")

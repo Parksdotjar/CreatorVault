@@ -181,7 +181,7 @@ export function UploadForm() {
     if (!parsed.success) {
       push({
         title: "Invalid data",
-        description: parsed.error.errors[0]?.message ?? "Check your inputs.",
+        description: parsed.error.issues[0]?.message ?? "Check your inputs.",
         variant: "error",
       });
       return;

@@ -4,7 +4,7 @@ import { Card } from "@/components/Card";
 import { formatDate } from "@/lib/utils";
 
 export default async function AdminReportsPage() {
-  const supabase = createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient();
   const { data: reports } = await supabase
     .from("asset_reports")
     .select("id, reason, details, created_at, asset_id, reporter_id")
@@ -18,7 +18,7 @@ export default async function AdminReportsPage() {
     new Set(
       (reports ?? [])
         .map((report) => report.reporter_id)
-        .filter(Boolean)
+        .filter((id): id is string => Boolean(id))
     )
   );
 

@@ -22,7 +22,7 @@ export function SignupForm() {
     setError(null);
     const parsed = signupSchema.safeParse(form);
     if (!parsed.success) {
-      setError(parsed.error.errors[0]?.message ?? "Invalid data.");
+      setError(parsed.error.issues[0]?.message ?? "Invalid data.");
       return;
     }
 

@@ -1,5 +1,6 @@
 import "server-only";
 import { createClient } from "@supabase/supabase-js";
+import type { Database } from "@/types/supabase";
 
 export function createSupabaseAdmin() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -9,7 +10,7 @@ export function createSupabaseAdmin() {
     throw new Error("Missing Supabase admin environment variables.");
   }
 
-  return createClient(supabaseUrl, serviceRoleKey, {
+  return createClient<Database>(supabaseUrl, serviceRoleKey, {
     auth: {
       autoRefreshToken: false,
       persistSession: false,

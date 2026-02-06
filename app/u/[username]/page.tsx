@@ -8,7 +8,7 @@ type PageProps = {
 };
 
 export default async function UserProfilePage({ params }: PageProps) {
-  const supabase = createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient();
   const { data: profile } = await supabase
     .from("profiles")
     .select("id, username, display_name, bio, socials")
@@ -36,8 +36,8 @@ export default async function UserProfilePage({ params }: PageProps) {
 
   const socials =
     profile.socials && typeof profile.socials === "object"
-      ? profile.socials
-      : {};
+      ? (profile.socials as Record<string, string>)
+      : ({} as Record<string, string>);
   const socialEntries = Object.entries(socials).filter(
     ([, value]) => typeof value === "string" && value.length > 0
   );
