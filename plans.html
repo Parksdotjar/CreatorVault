@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CreatorVault | Plans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-one"></div>
+    <div class="bg-orb orb-two"></div>
+    <div class="bg-orb orb-three"></div>
+
+    <header class="site-header">
+      <nav class="nav">
+        <div class="logo">
+          <span class="logo-dot"></span>
+          CreatorVault
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="browse.html">Browse</a>
+          <a href="plans.html">Plans</a>
+          <a href="assets.html">Assets</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <a class="btn btn-outline" href="contact.html">Start Uploading</a>
+      </nav>
+    </header>
+
+    <main class="plans">
+      <div class="section-heading center">
+        <h2>CHOOSE YOUR PLAN</h2>
+        <p>
+          Start free, then level up to unlock unlimited uploads and creator
+          analytics.
+        </p>
+      </div>
+      <div class="plan-grid">
+        <article class="plan-card" data-plan="free">
+          <div class="price-pill">Free</div>
+          <h3>Vault Free</h3>
+          <p class="plan-description">
+            Ideal for new creators testing the waters.
+          </p>
+          <ul>
+            <li>Up to 3 public assets</li>
+            <li>Basic tags + license options</li>
+            <li>Community profile</li>
+          </ul>
+          <button class="btn btn-outline full">Select Free</button>
+        </article>
+        <article class="plan-card highlighted" data-plan="pro">
+          <div class="price-pill pro">$12 / month</div>
+          <h3>Creator Pro</h3>
+          <p class="plan-description">
+            Unlimited drops, deeper analytics, and private packs.
+          </p>
+          <ul>
+            <li>Unlimited public + private assets</li>
+            <li>Preset + video support</li>
+            <li>Download insights dashboard</li>
+          </ul>
+          <button class="btn btn-primary full">Select Pro</button>
+        </article>
+      </div>
+
+      <section class="feature-strip" style="margin-top: 32px">
+        <div class="feature">
+          <span class="feature-icon">◆</span>
+          <div>
+            <h3>Secure uploads</h3>
+            <p>Direct delivery with signed URLs and privacy controls.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">◆</span>
+          <div>
+            <h3>Creator analytics</h3>
+            <p>Track download spikes, top tags, and trends.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">◆</span>
+          <div>
+            <h3>Profile branding</h3>
+            <p>Showcase your socials and featured packs.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>CreatorVault © 2026. Built for Minecraft creators.</p>
+      <div class="footer-links">
+        <a href="browse.html">Browse</a>
+        <a href="plans.html">Plans</a>
+        <a href="assets.html">Assets</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,6 +1,7 @@
--- CreatorVault schema + RLS
+-- CreatorVault core schema + RLS policies
 
 create extension if not exists "citext";
+create extension if not exists "pgcrypto";
 
 -- Profiles
 create table if not exists public.profiles (
@@ -9,7 +10,7 @@ create table if not exists public.profiles (
   display_name text,
   bio text,
   socials jsonb not null default '{}'::jsonb,
-  role text not null default 'user',
+  role text not null default 'user' check (role in ('user','admin')),
   created_at timestamptz not null default now()
 );
 
@@ -67,7 +68,7 @@ create trigger set_assets_updated_at
 before update on public.assets
 for each row execute function public.set_updated_at();
 
--- Prevent username updates
+-- Prevent username changes
 create or replace function public.prevent_username_update()
 returns trigger as $$
 begin
@@ -103,11 +104,11 @@ for each row execute function public.handle_new_user();
 
 -- Indexes
 create index if not exists assets_type_idx on public.assets (type);
+create index if not exists assets_tags_idx on public.assets using gin (tags);
 create index if not exists assets_created_at_idx on public.assets (created_at desc);
 create index if not exists assets_download_count_idx on public.assets (download_count desc);
-create index if not exists assets_tags_idx on public.assets using gin (tags);
 
--- Helper for admin checks
+-- Admin helper
 create or replace function public.is_admin()
 returns boolean as $$
   select exists (
@@ -132,7 +133,16 @@ drop policy if exists "Users can update own profile" on public.profiles;
 create policy "Users can update own profile"
 on public.profiles for update
 using (auth.uid() = id)
-with check (auth.uid() = id);
+with check (
+  auth.uid() = id
+  and role = (select role from public.profiles p where p.id = auth.uid())
+);
+
+drop policy if exists "Admins can manage profiles" on public.profiles;
+create policy "Admins can manage profiles"
+on public.profiles for update
+using (public.is_admin())
+with check (public.is_admin());
 
 -- Assets policies
 drop policy if exists "Public assets are viewable" on public.assets;

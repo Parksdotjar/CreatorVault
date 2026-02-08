@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CreatorVault | Browse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-one"></div>
+    <div class="bg-orb orb-two"></div>
+    <div class="bg-orb orb-three"></div>
+
+    <header class="site-header">
+      <nav class="nav">
+        <div class="logo">
+          <span class="logo-dot"></span>
+          CreatorVault
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="browse.html">Browse</a>
+          <a href="plans.html">Plans</a>
+          <a href="assets.html">Assets</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <a class="btn btn-outline" href="plans.html">Start Uploading</a>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-hero">
+        <div>
+          <p class="eyebrow">Browse CreatorVault</p>
+          <h1>Find the next pack for your Minecraft world.</h1>
+          <p>
+            Search by asset type, tags, licensing, or version. Every pack is
+            ready for direct download.
+          </p>
+        </div>
+        <div class="hero-card">
+          <div class="card-header">
+            <span class="pill">Trending</span>
+            <span class="muted">Updated live</span>
+          </div>
+          <div class="stat-grid">
+            <div>
+              <p class="stat-label">PNG packs</p>
+              <p class="stat-value">6.4k</p>
+            </div>
+            <div>
+              <p class="stat-label">SFX packs</p>
+              <p class="stat-value">2.1k</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="browse-controls">
+          <input class="input" placeholder="Search assets, tags, creators" />
+          <input class="input" placeholder="Tags (comma separated)" />
+          <select class="select">
+            <option>All licenses</option>
+            <option>Personal</option>
+            <option>Commercial</option>
+            <option>CC0</option>
+          </select>
+          <select class="select">
+            <option>Sort: Newest</option>
+            <option>Sort: Popular</option>
+            <option>Sort: Downloads</option>
+          </select>
+        </div>
+
+        <div class="browse-tabs">
+          <button class="active" data-tab="all">All</button>
+          <button data-tab="png">PNGs</button>
+          <button data-tab="background">Backgrounds</button>
+          <button data-tab="sfx">SFX</button>
+          <button data-tab="preset">Presets</button>
+          <button data-tab="video">Videos</button>
+        </div>
+
+        <div class="asset-grid">
+          <article class="asset-card" data-type="png">
+            <div class="asset-thumb glow"></div>
+            <div class="badge-row">
+              <span class="pill">PNG</span>
+              <span class="muted">Public</span>
+            </div>
+            <h4>Neon Nether UI</h4>
+            <p>Futuristic HUD overlays with a cool blue glow.</p>
+          </article>
+          <article class="asset-card" data-type="background">
+            <div class="asset-thumb blue"></div>
+            <div class="badge-row">
+              <span class="pill">Background</span>
+              <span class="muted">CC0</span>
+            </div>
+            <h4>Cosmic Dusk Skybox</h4>
+            <p>Ambient background for cinematic builds and reels.</p>
+          </article>
+          <article class="asset-card" data-type="sfx">
+            <div class="asset-thumb steel"></div>
+            <div class="badge-row">
+              <span class="pill">SFX</span>
+              <span class="muted">New</span>
+            </div>
+            <h4>Crystal Chime Pack</h4>
+            <p>Magical pickups, UI pings, and portal cues.</p>
+          </article>
+          <article class="asset-card" data-type="preset">
+            <div class="asset-thumb"></div>
+            <div class="badge-row">
+              <span class="pill">Preset</span>
+              <span class="muted">Personal</span>
+            </div>
+            <h4>Voxel HUD Preset</h4>
+            <p>Quick config pack with voxel-inspired UI layouts.</p>
+          </article>
+          <article class="asset-card" data-type="video">
+            <div class="asset-thumb blue"></div>
+            <div class="badge-row">
+              <span class="pill">Video</span>
+              <span class="muted">Pro</span>
+            </div>
+            <h4>Skybox Cinematic</h4>
+            <p>Loop-ready background visuals for creator reels.</p>
+          </article>
+          <article class="asset-card" data-type="png">
+            <div class="asset-thumb glow"></div>
+            <div class="badge-row">
+              <span class="pill">PNG</span>
+              <span class="muted">Trending</span>
+            </div>
+            <h4>Pixel Pulse Pack</h4>
+            <p>Animated UI sprites and button states.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>CreatorVault © 2026. Built for Minecraft creators.</p>
+      <div class="footer-links">
+        <a href="browse.html">Browse</a>
+        <a href="plans.html">Plans</a>
+        <a href="assets.html">Assets</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
